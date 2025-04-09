@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Rental Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+  <main class="container">
+    <form id="vehicleRentalForm" class="rental-form">
+      <div class="form-section">
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label for="phoneCountry">Phone Number</label>
+          <div class="phone-input">
+            <input type="text" id="phoneCountry" placeholder="+1" class="country-code">
+            <input type="text" id="phoneNumber" placeholder="Phone Number" class="phone-number">
+          </div>
+          <div class="input-labels">
+            <span>Country Code</span>
+            <span>Phone Number</span>
+          </div>
+        </div>
+
+        <!-- Vehicle Type -->
+        <div class="form-group">
+          <label class="form-label">
+            Type of Vehicle <span class="required">*</span>
+          </label>
+          <div class="checkbox-grid">
+            <div class="checkbox-item">
+              <input type="checkbox" id="escooter">
+              <label for="escooter">E-Scooter</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="mountainEbike">
+              <label for="mountainEbike">Mountain E-Bike</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="trekkingEbike">
+              <label for="trekkingEbike">Trekking E-bike</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="fatTireEbike">
+              <label for="fatTireEbike">Fat Tire E-bike</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- ID Upload -->
+        <div class="form-group">
+          <label class="form-label">
+            Passport/ ID / DRIVER'S LICENSE <span class="required">*</span>
+          </label>
+          <div class="file-upload" id="idUpload">
+            <div class="upload-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+            </div>
+            <div class="upload-text">Browse Files</div>
+            <div class="upload-subtext">Drag and drop files here</div>
+            <input type="file" id="idFile" class="file-input" accept="image/*,.pdf">
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Rental Period -->
+        <div class="date-time-grid">
+          <div class="form-group">
+            <label class="form-label">
+              From <span class="required">*</span>
+            </label>
+            <input type="date" id="fromDate" class="date-input">
+            <div class="input-label">Date</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Time <span class="required">*</span>
+            </label>
+            <input type="time" id="fromTime" class="time-input">
+            <div class="input-label">Hour Minutes</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Until</label>
+            <input type="date" id="untilDate" class="date-input">
+            <div class="input-label">Date</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Time</label>
+            <input type="time" id="untilTime" class="time-input">
+            <div class="input-label">Hour Minutes</div>
+          </div>
+        </div>
+
+        <!-- Vehicle Condition -->
+        <div class="form-group">
+          <label class="form-label">
+            Vehicle Condition Before Rental <span class="required">*</span>
+          </label>
+          <div class="file-upload" id="conditionUpload">
+            <div class="upload-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+            </div>
+            <div class="upload-text">Browse Files</div>
+            <div class="upload-subtext">Drag and drop multiple images here</div>
+            <input type="file" id="conditionFiles" class="file-input" accept="image/*" multiple>
+          </div>
+        </div>
+
+        <!-- Accessories -->
+        <div class="form-group">
+          <h2 class="section-title">Accessories</h2>
+          <hr class="divider">
+
+          <!-- Helmet -->
+          <div class="accessory-group">
+            <label class="form-label">Helmet</label>
+            <div class="number-buttons">
+              <button type="button" class="number-button active" data-value="0" data-type="helmet">0</button>
+              <button type="button" class="number-button" data-value="1" data-type="helmet">1</button>
+              <button type="button" class="number-button" data-value="2" data-type="helmet">2</button>
+              <button type="button" class="number-button" data-value="3" data-type="helmet">3</button>
+              <button type="button" class="number-button" data-value="4" data-type="helmet">4</button>
+              <button type="button" class="number-button" data-value="5" data-type="helmet">5</button>
+            </div>
+            <input type="hidden" id="helmetCount" value="0">
+          </div>
+
+          <!-- Lock -->
+          <div class="accessory-group">
+            <label class="form-label">Lock</label>
+            <div class="number-buttons">
+              <button type="button" class="number-button active" data-value="0" data-type="lock">0</button>
+              <button type="button" class="number-button" data-value="1" data-type="lock">1</button>
+              <button type="button" class="number-button" data-value="2" data-type="lock">2</button>
+              <button type="button" class="number-button" data-value="3" data-type="lock">3</button>
+              <button type="button" class="number-button" data-value="4" data-type="lock">4</button>
+              <button type="button" class="number-button" data-value="5" data-type="lock">5</button>
+            </div>
+            <input type="hidden" id="lockCount" value="0">
+          </div>
+
+          <!-- Elastic Straps -->
+          <div class="accessory-group">
+            <label class="form-label">Elastic Straps</label>
+            <div class="number-buttons">
+              <button type="button" class="number-button active" data-value="0" data-type="straps">0</button>
+              <button type="button" class="number-button" data-value="1" data-type="straps">1</button>
+              <button type="button" class="number-button" data-value="2" data-type="straps">2</button>
+              <button type="button" class="number-button" data-value="3" data-type="straps">3</button>
+              <button type="button" class="number-button" data-value="4" data-type="straps">4</button>
+              <button type="button" class="number-button" data-value="5" data-type="straps">5</button>
+            </div>
+            <input type="hidden" id="strapsCount" value="0">
+          </div>
+
+          <!-- Other Accessories -->
+          <div class="accessory-group">
+            <label class="form-label">Other Accessories</label>
+            <div class="checkbox-grid">
+              <div class="checkbox-item">
+                <input type="checkbox" id="bikeMirror">
+                <label for="bikeMirror">Bike Mirror</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="phoneMount">
+                <label for="phoneMount">Phone Mount</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="charger">
+                <label for="charger">Charger</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="batteryKey">
+                <label for="batteryKey">Battery Key</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="babySeat">
+                <label for="babySeat">Baby Seat</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="bikeBasket">
+                <label for="bikeBasket">Bike Basket</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="seatCushion">
+                <label for="seatCushion">Seat Cushion</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Terms and Conditions -->
+        <div class="form-group">
+          <div class="terms-header">
+            <h2 class="terms-title">TERMS AND CONDITIONS OF VEHICLE RENTAL</h2>
+          </div>
+
+          <div class="terms-card">
+            <h3 class="terms-subtitle">TERMS AND CONDITIONS OF VEHICLE RENTAL</h3>
+            <p class="terms-text">- Only the persons mentioned in the agreement will be allowed to drive the vehicle. In case any vehicle is to be used by an underage person, specifically (15-17) years old for the e-bikes or (12-17) for the scooters, then this contract is the written consent of the parent. More on the respective section below.*</p>
+            <p class="terms-text">-The renter is responsible for any violation of traffic rules: wrong parking, fast driving etc.</p>
+            <p class="terms-text">- It is strictly forbidden to ride a bike/scooter off-road, to ride any bike/scooter on the beach and to ride any bike/scooter with more than one person, the renter will return at the same time to the equipment and accessories. the city where the vehicle was rented or as otherwise specified on the signed page of the contract. Extension of the rental period is done with the approval of the owner and without it the renter will be charged accordingly.</p>
+            <p class="terms-text">- The renter is obliged to return the vehicle's batteries fully charged, if the rental period is at least 24 hours.</p>
+          </div>
+
+          <div class="checkbox-item terms-checkbox">
+            <input type="checkbox" id="termsAgreed">
+            <label for="termsAgreed">
+              I have read and agreed to the 
+              <a href="#" class="terms-link">terms & conditions</a>
+              <span class="required">*</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Underage Participant -->
+        <div class="form-group">
+          <label class="form-label">Is there any underaged person participating?</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="yes" name="isUnderage" value="yes">
+              <label for="yes">Yes</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="no" name="isUnderage" value="no">
+              <label for="no">No</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Owner's Signature -->
+        <div class="form-group">
+          <label class="form-label">Owner's signature:</label>
+          <div class="signature-pad-container">
+            <canvas id="ownerSignature" class="signature-pad"></canvas>
+          </div>
+        </div>
+
+        <!-- Participant's Signature -->
+        <div class="form-group">
+          <label class="form-label">
+            Participant's signature <span class="required">*</span>
+          </label>
+          <div class="signature-pad-container">
+            <canvas id="participantSignature" class="signature-pad"></canvas>
+            <button type="button" id="clearParticipantSignature" class="clear-button">Clear</button>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="submit-container">
+          <button type="submit" id="submitButton" class="submit-button">Submit</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+      <div class="toast-content">
+        <div id="toastTitle" class="toast-title"></div>
+        <div id="toastMessage" class="toast-message"></div>
+      </div>
+      <button id="toastClose" class="toast-close">×</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
